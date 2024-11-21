@@ -31,7 +31,9 @@ class _RectanguloUIState extends State<RectanguloUI> {
         }
       });
     } else {
-      resultado = "Valores no validos, deben ser mayor a 0";
+      setState(() {
+        resultado = "Valores no validos, deben ser mayor a 0";
+      });
     }
   }
 
@@ -46,24 +48,33 @@ class _RectanguloUIState extends State<RectanguloUI> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            TextField(
-              controller: baseController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Base',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              controller: alturaController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Altura',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 20),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: baseController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: 'Base',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 10),
+                Expanded(
+                  child: TextField(
+                    controller: alturaController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: 'Altura',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+            ],),
+            SizedBox(width: 10),
+
             DropdownButton<String>(
               value: seleccion,
               onChanged: (String? newValue) {
